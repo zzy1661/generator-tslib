@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"downlevelIteration": true,
+		"alwaysStrict": true,
+		"sourceMap": true,
+		"declaration": true,
+		"removeComments": false,
+		"strict": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noImplicitAny": false,
+		"noImplicitThis": false,
+		"noEmit": true,
+		"experimentalDecorators": true,
+		"useDefineForClassFields": true,
+		"jsx": "react",
+		"esModuleInterop": true,
+		"rootDir": "src"
+	},
+	"exclude": [
+		"node_modules"
+	]
+}

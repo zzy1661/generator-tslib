@@ -1,0 +1,1 @@
+# Yeoman ts lib template

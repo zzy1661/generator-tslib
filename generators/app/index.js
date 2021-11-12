@@ -26,6 +26,27 @@ module.exports = class extends Generator {
 
           return true;
         }
+      }, {
+        type:'confirm',
+        name:'useGitName',
+        message:'use git config.name & email in pkgJson.author',
+        sotre:true,
+      },{
+        type:'input',
+        name:'authorName',
+        message:'author name',
+        store:true,
+        when(ans) {
+          return !ans.useGitName
+        }
+      }, {
+        type:'input',
+        name:'authorEmail',
+        message:'author email',
+        store:true,
+        when(ans){
+          return !ans.useGitName
+        }
       }
     ];
 
@@ -35,12 +56,13 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    const {name,useGitName,authorEmail='',authorName=''} = this.props;
     this.fs.copyTpl(
       this.templatePath(),
-      this.destinationPath(`./${this.props.name.toLowerCase()}`),{
-        name:this.props.name.toLowerCase(),
-        gitname:this.user.git.name(),
-        email:this.user.git.email()
+      this.destinationPath(`./${name.toLowerCase()}`),{
+        name:name.toLowerCase(),
+        gitname:useGitName?this.user.git.name():authorName,
+        email:useGitName?this.user.git.email():authorEmail
       }
     );
   }

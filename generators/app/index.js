@@ -1,40 +1,49 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
 const yosay = require('yosay');
+const validateProjectName = require('validate-npm-package-name');
 
 module.exports = class extends Generator {
   prompting() {
-    // Have Yeoman greet the user.
     this.log(
-      yosay(
-        `Welcome to the magnificent ${chalk.red('@bressanone/generator-tslib')} generator!`
-      )
+      yosay(`creating a ts lib project`)
     );
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
+        type: 'input',
+        name: 'name',
+        message: 'lib name (lowercase)',
+        validate(input){
+          if(!input.trim()) {
+            return 'name is required'
+          }
+
+          const validationResult = validateProjectName(input);
+          if(!validationResult.validForNewPackages) {
+            return 'invalid name'
+          }
+
+          return true;
+        }
       }
     ];
 
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
+    return this.prompt(prompts).then((props) => {
       this.props = props;
     });
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+    this.fs.copyTpl(
+      this.templatePath(),
+      this.destinationPath(`./${this.props.name.toLowerCase()}`),{
+        name:this.props.name.toLowerCase(),
+        gitname:this.user.git.name(),
+        email:this.user.git.email()
+      }
     );
   }
 
-  install() {
-    this.installDependencies();
-  }
+
 };

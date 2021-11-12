@@ -7,10 +7,13 @@ describe('@bressanone/generator-tslib:app', () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/app'))
-      .withPrompts({ someAnswer: true });
+      .withPrompts({ name: 'Dictionary' });
   });
 
   it('creates files', () => {
-    assert.file(['dummyfile.txt']);
+    assert.file(['dictionary/package.json']);
   });
+  it('template compiled',()=>{
+    assert.fileContent('dictionary/package.json', /dictionary/g);
+  })
 });

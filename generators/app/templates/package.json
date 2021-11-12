@@ -1,9 +1,9 @@
 {
-  "name": " ",
+  "name": "<%= name %>",
   "version": "1.0.0",
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/.esm.js",
+  "module": "dist/<%= name %>.esm.js",
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "files": [
@@ -17,17 +17,16 @@
     "url": ""
   },
   "keywords": [
-    ""
+    "<%= name %>"
   ],
   "license": "MIT",
   "scripts": {
     "build": "node ./scripts/build.js",
     "test:types": "tsc --noEmit"
   },
-  "dependencies": {
-    "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
-    "uuid": "8.3.2"
+  "author": {
+    "email": "<%= email %>",
+    "name": "<%= gitname %>"
   },
   "devDependencies": {
     "@types/node": "^15.6.0",

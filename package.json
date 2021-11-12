@@ -2,41 +2,36 @@
   "name": "@bressanone/generator-tslib",
   "version": "1.0.0",
   "description": "tslib template",
-  "homepage": "",
   "author": {
     "name": "zhouzhenyu",
-    "email": "1556597051@qq.com",
-    "url": ""
+    "email": "1556597051@qq.com"
   },
   "files": [
-    "src",
-    "dist",
-    "CHANGELOG.md",
+    "generators",
     "README.md"
   ],
-  "main": "dist/index.js",
   "keywords": [
-    "",
+    "ts-lib",
     "yeoman-generator"
   ],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.1",
     "eslint": "^6.6.0",
-    "prettier": "^1.19.1",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.3",
     "eslint-config-prettier": "^6.6.0",
-    "eslint-plugin-prettier": "^3.1.1",
     "eslint-config-xo": "^0.27.2",
-    "jest": "^26.1.0"
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "jest": "^26.1.0",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^6.2.0"
   },
   "engines": {
-    "npm": ">= 4.0.0"
+    "npm": ">= 12.0.0"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/zzy1661/generator-tslib.git"
   },
   "license": "MIT",
   "scripts": {
@@ -44,8 +39,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "yeoman-generator": "^3.1.1",
-    "chalk": "^2.1.0",
+    "validate-npm-package-name": "^3.0.0",
+    "yeoman-environment": "3.3.0",
+    "yeoman-generator": "^5.4.2",
     "yosay": "^2.0.2"
   },
   "jest": {
@@ -74,9 +70,6 @@
     "env": {
       "jest": true,
       "node": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
     },
     "plugins": [
       "prettier"
